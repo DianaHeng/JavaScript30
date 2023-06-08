@@ -5,8 +5,7 @@
   <title>Understanding JavaScript's Capture</title>
   <link rel="icon" href="https://fav.farm/🔥" />
 </head>
-<body class="bod">
-
+<body class="body">
   <div class="one">
     <div class="two">
       <div class="three">
@@ -43,7 +42,17 @@
 
 <button></button>
 <script>
+const divs = document.querySelectorAll("div");
 
+function logText(e) {
+  console.log(this.classList.value);
+  // e.stopPropagation(); //stop bubbling
+}
+
+divs.forEach(div => div.addEventListener("click", logText, {capture: false, once: true}))
+//Note: capture: true => capture down [run the function on the way down - opposite of bubbling up]
+//By default is false
+//Note2 : once -> only run once
 </script>
 </body>
 </html>
